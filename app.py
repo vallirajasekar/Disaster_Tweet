@@ -9,8 +9,8 @@ import nltk
 app = Flask(__name__)
 
 # Load the trained model and vectorizer
-clf = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_Tweet/multinomial_nb_classifier.pkl')
-vectorizer = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_Tweet/tfidf_vectorizer.pkl')
+clf = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_tweet/multinomial_nb_classifier.pkl')
+vectorizer = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_tweet/tfidf_vectorizer.pkl')
 
 # Download NLTK resources (only needs to be done once)
 nltk.download('stopwords')
@@ -45,6 +45,10 @@ def predict():
     prediction = clf.predict(vectorized_text)[0]
     sentiment = "Real Disaster" if prediction == 1 else "Not a Real Disaster"
     return jsonify({'sentiment': sentiment})
+
+@app.route('/styles.css')
+def styles():
+    return app.send_static_file('styles.css')
 
 if __name__ == '__main__':
     app.run(debug=True)
