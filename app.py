@@ -9,8 +9,8 @@ import nltk
 app = Flask(__name__)
 
 # Load the trained model and vectorizer
-clf = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_tweet/multinomial_nb_classifier.pkl')
-vectorizer = joblib.load('/Users/vallirajasekar/Desktop/NLP_Challenge/Disaster_tweet/tfidf_vectorizer.pkl')
+clf = joblib.load('multinomial_nb_classifier.pkl')
+vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 # Download NLTK resources (only needs to be done once)
 nltk.download('stopwords')
